@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract institutional architecture">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12294a"/>
+      <stop offset="1" stop-color="#0a1728"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <g fill="none" stroke="#3c5f83" stroke-width="1.25" opacity="0.55">
+    <!-- structural grid -->
+    <path d="M120 900V210h300v690M470 900V300h240v600M760 900V150h360v750M1170 900V270h300v630"/>
+    <g stroke="#6a86a3" opacity="0.5">
+      <path d="M120 300h300M120 390h300M120 480h300M120 570h300M120 660h300M120 750h300"/>
+      <path d="M470 380h240M470 470h240M470 560h240M470 650h240M470 740h240"/>
+      <path d="M760 250h360M760 340h360M760 430h360M760 520h360M760 610h360M760 700h360M760 790h360"/>
+      <path d="M1170 360h300M1170 450h300M1170 540h300M1170 630h300M1170 720h300M1170 810h300"/>
+    </g>
+    <g stroke="#6a86a3" opacity="0.5">
+      <path d="M195 210V900M270 210V900M345 210V900"/>
+      <path d="M540 300V900M615 300V900M685 300V900"/>
+      <path d="M850 150V900M940 150V900M1030 150V900"/>
+      <path d="M1245 270V900M1320 270V900M1395 270V900"/>
+    </g>
+  </g>
+  <g fill="#3c5f83" opacity="0.22">
+    <rect x="760" y="150" width="360" height="750"/>
+    <rect x="120" y="210" width="300" height="690"/>
+  </g>
+</svg>
