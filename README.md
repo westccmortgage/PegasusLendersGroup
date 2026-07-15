@@ -44,16 +44,20 @@ All discussions, documents, qualification, and funding instructions are handled 
 
 ## Tech
 
-A static website — plain HTML and CSS, no build step and no backend framework.
+A static website — plain HTML, CSS, and vanilla JS. No build step, no framework, no backend.
+(There is no React/Vite/TypeScript toolchain in this repository; the contact form is implemented
+directly against the DOM.)
 
 ```
-index.html              Homepage (corporate hero, Pegasus role, current capital opportunity,
-                        capital structure, why Pegasus, development experience, direct contact)
-project.html            Vista Del Mar Townhomes — opportunity detail (secondary page)
-styles.css              Design system (palette, typography, spacing, components)
-script.js               Progressive enhancement: mobile nav + human-led contact form (mailto)
-assets/                 Brand mark / favicon
-public/images/projects/ Approved project media, by project (see public/images/README.md)
+index.html                  Homepage — lead (Pegasus + current Vista Del Mar opportunity) → contact
+about.html                  About Pegasus — short internal page
+development-experience.html Development Experience — Hollyline + Sky Lane proof of execution
+project.html                Vista Del Mar — opportunity detail (secondary page)
+styles.css                  Design system (palette, typography, spacing, components)
+script.js                   Progressive enhancement: mobile nav + Netlify capital-interest form
+netlify.toml                Netlify config (static publish, no build)
+assets/                     Brand mark / favicon
+public/images/projects/     Approved project media, by project (see public/images/README.md)
 ```
 
 Project imagery is organized under `public/images/projects/{vista-del-mar,sky-lane,hollyline}/`
@@ -61,14 +65,33 @@ and optimized for the web (WebP with JPG/PNG fallback via `<picture>`, responsiv
 baked EXIF orientation, lazy loading below the fold). See
 [`public/images/README.md`](./public/images/README.md) for details and usage guardrails.
 
-External links: the Vista Del Mar project name and **View Project** button open
-[vistadelmartownhomes.com](https://vistadelmartownhomes.com); the Development Experience
-section links to [californiardp.com](https://californiardp.com). Both open in a new tab
-with `rel="noopener noreferrer"`.
+External links open in a new tab with `rel="noopener noreferrer"`: the homepage **View Full Project**
+button opens [vistadelmartownhomes.com](https://vistadelmartownhomes.com); the Development Experience
+page links to [californiardp.com](https://californiardp.com).
 
-The contact form is intentionally simple and human-led. It composes an email to Pegasus rather than
-submitting to any automated pipeline. To route submissions through a form service instead, replace the
-handler in `script.js` — no other change is required.
+## Contact form — Netlify Forms
+
+The contact form uses **[Netlify Forms](https://docs.netlify.com/forms/setup/)** — no backend,
+serverless function, CRM, database, or payment integration.
+
+- **Form name:** `capital-interest`
+- **Fields:** `name`, `email`, `phone`, `company`, `capitalRange`, `message`, plus a `bot-field`
+  honeypot and the hidden `form-name` value.
+- **Static detection:** a hidden `<form name="capital-interest" data-netlify="true"
+  netlify-honeypot="bot-field" hidden>` in `index.html` lets Netlify register the form at deploy
+  time. Its field names match the visible form exactly.
+- **Submission:** the visible form submits via **AJAX `POST` to `/`** with
+  `Content-Type: application/x-www-form-urlencoded`, body encoded using `URLSearchParams`
+  (not JSON), including `form-name=capital-interest`.
+- **States:** `idle → submitting → success → error`. While submitting, the button is disabled and
+  shows “Sending…” (duplicate submissions are blocked). On success the form is replaced by an inline
+  confirmation and keyboard focus moves to it. On error a visible message points to
+  `contact@pegasuslendersgroup.com`. Status uses `aria-live`, and required fields are validated
+  client-side (name, valid email, message). The honeypot is visually hidden and hidden from
+  assistive technology.
+
+To change the destination inbox, configure form notifications in the Netlify dashboard
+(Site → Forms) — no code change is required.
 
 ## Local preview
 
@@ -78,6 +101,10 @@ No tooling required. Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
+
+> Note: Netlify Forms submissions only work on a deployed Netlify site (the form is processed by
+> Netlify's infrastructure). Locally the form validates and exercises its UI states, but the POST
+> to `/` will not be captured.
 
 ## Contributing
 

@@ -94,12 +94,17 @@ Use only these calls to action:
 - Discuss Capital Participation
 - View Current Opportunity
 - Discuss This Opportunity / Discuss the Opportunity
+- Discuss Vista Del Mar
+- View Full Project
 - Request Project Information
 - Speak with Pegasus
 - Submit an Opportunity
 - Contact Pegasus
 - Explore Opportunities
 - View Project
+- View Current Opportunity
+
+CTA buttons must identify what they do (e.g. "Discuss Vista Del Mar", "View Full Project") — no ambiguous buttons that fail to name the opportunity.
 
 ### 4.2 Prohibited CTA language
 
@@ -114,9 +119,22 @@ Never use platform / self-service language:
 
 ### 4.3 Financial-figure disclaimer
 
-All financial figures on opportunities must be clearly marked as:
+All financial figures on opportunities must be clearly marked as preliminary, e.g.:
 
-> **Preliminary — subject to final acquisition terms, title review, construction bids, financing, approvals, and due diligence.**
+> **Preliminary figures subject to final acquisition terms, title review, construction pricing, financing, approvals, and due diligence.**
+
+### 4.4 Approved homepage structure
+
+The public homepage is deliberately **short — two sections plus header and footer**. A visitor should grasp its purpose within a few seconds:
+
+1. **Lead** — combines Pegasus identity and the current Vista Del Mar opportunity in one section: eyebrow "PEGASUS LENDERS GROUP LLC"; the approved Vista rendering (with the "Conceptual rendering for illustrative purposes only." caption); the **four** primary figures only — 17 Rebuild Units · 48,079 Original Sq.Ft. · Up to $8M Stage 1 Capital · ≈$58.2M Conservative Projected Gross Revenue; the preliminary-figures disclosure; and CTAs **Discuss Vista Del Mar** (→ contact form) and **View Full Project** (→ vistadelmartownhomes.com, new tab).
+2. **Direct Contact** — placed **immediately after** the lead. The Netlify `capital-interest` form (name, email, phone, company, capitalRange, message).
+
+Do **NOT** place on the homepage: corporate slogans, Pegasus-role cards, sponsor-alignment (Sponsor-Led / Capital-Aligned / Execution-Focused), a separate Stage 1 / Stage 2 explanation, the ≈20% sponsor-contribution figure, the $27M construction estimate as a primary figure, development-experience projects, or any process/philosophy section between the opportunity and the form.
+
+**Header nav (short):** Current Opportunity · About Pegasus · Development Experience · Contact, with primary button **Speak with Pegasus**. **About Pegasus** and **Development Experience** are their own short internal pages. Development Experience holds the Hollyline and Sky Lane proof-of-execution references and the California Residential Development Partners link — never on the homepage.
+
+**Contact form:** implemented with **Netlify Forms** (form name `capital-interest`) — a static hidden form for detection plus a URL-encoded AJAX submission with idle/submitting/success/error states. No backend, serverless function, CRM, payment, account, or database.
 
 ---
 
