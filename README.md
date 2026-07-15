@@ -10,8 +10,10 @@ invites serious capital partners to contact Pegasus directly.
 
 ## Purpose & Scope
 
-This website is a **direct capital-partner introduction and project-presentation system** — nothing more.
-The process is **human-led** end to end:
+Pegasus Lenders Group is a **human-led corporate capital website**. It is a modern, serious corporate
+capital site — not the Vista Del Mar project site, a project marketplace, a portfolio carousel, or an
+automated platform. The public site **presents information and generates direct conversations**; the
+process is **human-led** end to end:
 
 1. See the opportunity.
 2. Understand the key numbers.
@@ -19,14 +21,24 @@ The process is **human-led** end to end:
 4. Discuss the project directly with the team.
 5. Receive additional materials personally, after the initial conversation.
 
+### Project references
+
+- **Vista Del Mar Townhomes has its own project website** ([vistadelmartownhomes.com](https://vistadelmartownhomes.com))
+  and appears on the Pegasus site **only as the current capital opportunity** — never as the Pegasus identity.
+- **Other development projects** appear **only as limited proof of execution** (name, status, one approved image) —
+  no values, financing, or private ownership details.
+
 ### Permanently out of scope
 
-This is **not** an automated investment platform. The following are **not built and not on any roadmap**:
+This is **not** an automated investment platform. The site does not accept money, commitments, subscriptions,
+or payments. The following are **not built and not on any roadmap**:
 
 - Payments · Subscriptions · Investor accounts
 - CRM · Automatic accreditation · KYC / AML workflow
 - Investor portal · Automated onboarding · Securities checkout
 - Complex dashboards · Automated qualification or investment processes
+
+All discussions, documents, qualification, and funding instructions are handled personally, off the public website.
 
 ---
 
@@ -35,9 +47,9 @@ This is **not** an automated investment platform. The following are **not built 
 A static website — plain HTML and CSS, no build step and no backend framework.
 
 ```
-index.html              Homepage (hero, what we do, featured opportunity,
-                        development experience, why Pegasus, how it works, contact)
-project.html            Vista Del Mar Townhomes — featured opportunity detail
+index.html              Homepage (corporate hero, Pegasus role, current capital opportunity,
+                        capital structure, why Pegasus, development experience, direct contact)
+project.html            Vista Del Mar Townhomes — opportunity detail (secondary page)
 styles.css              Design system (palette, typography, spacing, components)
 script.js               Progressive enhancement: mobile nav + human-led contact form (mailto)
 assets/                 Brand mark / favicon

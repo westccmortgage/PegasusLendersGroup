@@ -36,9 +36,9 @@ Every design and content decision should reinforce this positioning.
 
 ## 3. Business Purpose & Scope — READ BEFORE BUILDING
 
-Pegasus Lenders Group is **NOT** being built as an automated investment platform. The website has **one primary business purpose**:
+**Pegasus Lenders Group is a human-led corporate capital website.** It is a modern, serious corporate capital site — **not** the Vista Del Mar project site, a project marketplace, a portfolio carousel, an automated investment platform, a payment or subscription system, or a CRM / investor portal. Its job is to intelligently explain who Pegasus is, the role it performs, the current capital opportunity and its numbers, sponsor alignment, and how a serious capital partner can contact Pegasus directly — all understandable within about **30 seconds**.
 
-> Present selected real estate opportunities clearly, establish credibility, show the important numbers, and encourage serious capital partners to contact Pegasus directly.
+> The public site **presents information and generates direct conversations.** It does not accept money, commitments, subscriptions, or payments; all discussions, documents, qualification, and funding instructions are handled personally, off the public website.
 
 **The process is and remains human-led.** A potential capital partner should:
 
@@ -66,6 +66,12 @@ These are permanently out of scope. Do not build them, and do not add them to an
 
 The site is a **direct capital-partner introduction and project-presentation system only.**
 
+### 3.2 Project references on the Pegasus site
+
+- **Vista Del Mar Townhomes has its own project website** (vistadelmartownhomes.com). On the Pegasus site it appears **only as the current capital opportunity** — it must never become the Pegasus identity or hero. The project name and its project button link out to that external site.
+- **Other development projects** (e.g., work through California Residential Development Partners) appear **only as limited proof of execution** — a name, status, and one approved image each. Never publish their values, financing, private ownership details, or long descriptions.
+- **The hero is always Pegasus, never a specific project.** A subtle approved architectural image may support the hero, but must not turn it into a project advertisement.
+
 ---
 
 ## 4. Content Direction
@@ -85,7 +91,9 @@ Each section should contain, at most:
 
 Use only these calls to action:
 
-- Discuss This Opportunity
+- Discuss Capital Participation
+- View Current Opportunity
+- Discuss This Opportunity / Discuss the Opportunity
 - Request Project Information
 - Speak with Pegasus
 - Submit an Opportunity

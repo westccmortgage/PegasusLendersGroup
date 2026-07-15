@@ -79,13 +79,13 @@
         "Email: " + email,
         "Phone: " + (get("phone") || "—"),
         "Company: " + (get("company") || "—"),
-        "I am a: " + get("role"),
+        "Estimated Capital Range: " + get("capital"),
         "",
         "Message:",
         get("message") || "—"
       ];
 
-      var subject = "Capital-partner inquiry — " + (name || "Pegasus");
+      var subject = "Capital participation inquiry — " + (name || "Pegasus");
       var href =
         "mailto:" +
         CONTACT_EMAIL +
