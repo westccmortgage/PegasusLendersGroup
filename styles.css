@@ -295,26 +295,41 @@ p {
 .hero__bg {
   position: absolute;
   inset: 0;
-  opacity: 0.5;
+  opacity: 0.6;
   z-index: 0;
+}
+
+.hero__bg picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hero__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 70% center;
 }
 
+/* Deep-navy blend: near-opaque behind the text (left), lifting on the
+   right so the Hollyline crop supports the hero without competing. */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    105deg,
-    rgba(10, 23, 40, 0.94) 0%,
-    rgba(10, 23, 40, 0.82) 42%,
-    rgba(14, 31, 56, 0.55) 100%
-  );
+      100deg,
+      rgba(10, 23, 40, 0.95) 0%,
+      rgba(10, 23, 40, 0.86) 46%,
+      rgba(14, 31, 56, 0.62) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(10, 23, 40, 0.15) 0%,
+      rgba(10, 23, 40, 0) 40%,
+      rgba(10, 23, 40, 0.35) 100%
+    );
   z-index: 1;
 }
 
@@ -394,6 +409,12 @@ p {
 
 .opp__media {
   position: relative;
+  margin: 0;
+}
+
+.opp__media picture {
+  display: block;
+  position: relative;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--hairline);
@@ -405,6 +426,22 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.opp__caption {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--graphite-soft);
+  font-style: italic;
+}
+
+.opp__title-link {
+  color: inherit;
+}
+
+.opp__title-link:hover {
+  color: var(--steel);
 }
 
 .opp__tag {
@@ -500,6 +537,135 @@ p {
 
 .opp .btn-row {
   margin-top: 2rem;
+}
+
+/* ---------- Development Experience ---------- */
+/* Subtle separation between two consecutive warm-white sections. */
+.section--divider {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--steel);
+}
+
+.text-link:hover {
+  color: var(--navy);
+}
+
+.text-link:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.exp-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-card__media {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 8px;
+  height: clamp(220px, 27vw, 320px);
+}
+
+.exp-shot {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background: var(--stone-2);
+}
+
+.exp-shot picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.exp-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-label {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  background: rgba(10, 23, 40, 0.88);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 2px;
+}
+
+.exp-card__body {
+  padding-top: 1.4rem;
+}
+
+.exp-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.status {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.7rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+}
+
+.status--progress {
+  color: var(--steel);
+  background: rgba(60, 95, 131, 0.1);
+  border-color: rgba(60, 95, 131, 0.28);
+}
+
+.status--done {
+  color: var(--navy);
+  background: rgba(14, 31, 56, 0.08);
+  border-color: rgba(14, 31, 56, 0.2);
+}
+
+.exp-place {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite-soft);
+}
+
+.exp-card__body h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+}
+
+.exp-card__body p {
+  margin-top: 0.7rem;
+  color: var(--graphite-soft);
+  font-size: 0.975rem;
+  max-width: 34rem;
 }
 
 /* ---------- Why Pegasus ---------- */
@@ -800,6 +966,25 @@ p {
   object-fit: cover;
 }
 
+/* Captioned variant: the aspect box wraps the image; caption sits below. */
+.figure--captioned {
+  border: 0;
+  overflow: visible;
+  background: none;
+  border-radius: 0;
+  aspect-ratio: auto;
+  margin: 0;
+}
+
+.figure--captioned picture {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--stone-2);
+}
+
 .detail-list {
   list-style: none;
   margin: 0;
@@ -886,6 +1071,10 @@ p {
   .opp__media {
     order: -1;
   }
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, 3.5rem);
+  }
   .stats--project {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -923,6 +1112,18 @@ p {
   }
   .form {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Stack a card's two images so each keeps a clean, undistorted crop. */
+  .exp-card__media {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 10px;
+  }
+  .exp-shot {
+    aspect-ratio: 16 / 10;
   }
 }
 

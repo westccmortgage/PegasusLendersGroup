@@ -48,8 +48,11 @@
   <main>
     <!-- ============ Hero ============ -->
     <section class="hero">
-      <div class="hero__bg">
-        <img src="assets/hero.svg" alt="" aria-hidden="true" />
+      <div class="hero__bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="public/images/projects/hollyline/hollyline-exterior-960.webp 960w, public/images/projects/hollyline/hollyline-exterior.webp 2048w" sizes="100vw" />
+          <img src="public/images/projects/hollyline/hollyline-exterior.jpg" alt="" width="2048" height="1150" fetchpriority="high" />
+        </picture>
       </div>
       <div class="wrap hero__inner">
         <p class="eyebrow">Real Estate Lending &amp; Project Sponsorship</p>
@@ -97,13 +100,17 @@
           <p class="eyebrow">Featured Opportunity</p>
         </div>
         <div class="opp reveal">
-          <div class="opp__media">
+          <figure class="opp__media">
             <span class="opp__tag">Featured</span>
-            <img src="assets/vista-del-mar.svg" alt="Architectural rendering of Vista Del Mar Townhomes, Pacific Palisades" />
-          </div>
+            <picture>
+              <source type="image/webp" srcset="public/images/projects/vista-del-mar/vista-del-mar-featured-960.webp 960w, public/images/projects/vista-del-mar/vista-del-mar-featured.webp 1672w" sizes="(max-width: 960px) 100vw, 52vw" />
+              <img src="public/images/projects/vista-del-mar/vista-del-mar-featured.png" width="1672" height="941" alt="Aerial conceptual rendering of Vista Del Mar Townhomes — a hillside townhouse community with a central pool and access roads, Pacific Palisades, California" />
+            </picture>
+            <figcaption class="opp__caption">Conceptual rendering for illustrative purposes only.</figcaption>
+          </figure>
           <div class="opp__body">
             <p class="opp__place">Pacific Palisades, California</p>
-            <h2>Vista Del Mar Townhomes</h2>
+            <h2><a class="opp__title-link" href="https://vistadelmartownhomes.com" target="_blank" rel="noopener noreferrer">Vista Del Mar Townhomes</a></h2>
             <p class="opp__lede">A select rebuild opportunity presented primarily through its numbers.</p>
 
             <div class="stats">
@@ -140,10 +147,78 @@
             <p class="disclaimer">Preliminary — subject to final acquisition terms, title review, construction bids, financing, approvals, and due diligence.</p>
 
             <div class="btn-row">
-              <a href="project.html" class="btn btn--primary">View Project <span class="btn-arrow">→</span></a>
+              <a href="https://vistadelmartownhomes.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View Project <span class="btn-arrow">→</span></a>
               <a href="#contact" class="btn btn--ghost">Discuss the Opportunity</a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Development Experience ============ -->
+    <section class="section section--divider" id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Development Experience</p>
+          <h2>Experience grounded in real projects.</h2>
+          <p class="lede">Selected Los Angeles residential projects developed and executed through California Residential Development Partners.</p>
+          <a class="text-link" href="https://californiardp.com" target="_blank" rel="noopener noreferrer">View California Residential Development Partners <span class="btn-arrow">→</span></a>
+        </div>
+
+        <div class="exp-grid reveal">
+          <!-- Project 1 — 12275 Sky Lane -->
+          <article class="exp-card">
+            <div class="exp-card__media">
+              <figure class="exp-shot">
+                <picture>
+                  <source type="image/webp" srcset="public/images/projects/sky-lane/sky-lane-rendering-01.webp" />
+                  <img src="public/images/projects/sky-lane/sky-lane-rendering-01.jpg" width="850" height="696" loading="lazy" decoding="async" alt="Architectural rendering of 12275 Sky Lane — a contemporary hillside residence with a pool and canyon views" />
+                </picture>
+                <figcaption class="media-label">Architectural Rendering</figcaption>
+              </figure>
+              <figure class="exp-shot">
+                <picture>
+                  <source type="image/webp" srcset="public/images/projects/sky-lane/sky-lane-construction-03.webp" />
+                  <img src="public/images/projects/sky-lane/sky-lane-construction-03.jpeg" width="1152" height="1536" loading="lazy" decoding="async" alt="Current construction of 12275 Sky Lane showing the built structure" />
+                </picture>
+                <figcaption class="media-label">Current Construction</figcaption>
+              </figure>
+            </div>
+            <div class="exp-card__body">
+              <div class="exp-card__meta">
+                <span class="status status--progress">Under Construction</span>
+                <span class="exp-place">Brentwood, Los Angeles</span>
+              </div>
+              <h3>12275 Sky Lane</h3>
+              <p>Contemporary hillside residence designed around canyon views, expansive glazing, indoor-outdoor living, terraces, and a private pool.</p>
+            </div>
+          </article>
+
+          <!-- Project 2 — 3802 Hollyline Avenue -->
+          <article class="exp-card">
+            <div class="exp-card__media">
+              <figure class="exp-shot">
+                <picture>
+                  <source type="image/webp" srcset="public/images/projects/hollyline/hollyline-aerial-960.webp 960w, public/images/projects/hollyline/hollyline-aerial.webp 2048w" sizes="(max-width: 960px) 100vw, 44vw" />
+                  <img src="public/images/projects/hollyline/hollyline-aerial.jpg" width="2048" height="1150" loading="lazy" decoding="async" alt="Aerial photograph of the completed 3802 Hollyline Avenue residence and pool" />
+                </picture>
+              </figure>
+              <figure class="exp-shot">
+                <picture>
+                  <source type="image/webp" srcset="public/images/projects/hollyline/hollyline-pool-960.webp 960w, public/images/projects/hollyline/hollyline-pool.webp 2048w" sizes="(max-width: 960px) 100vw, 44vw" />
+                  <img src="public/images/projects/hollyline/hollyline-pool.jpg" width="2048" height="1366" loading="lazy" decoding="async" alt="Infinity pool and terrace at the completed 3802 Hollyline Avenue residence" />
+                </picture>
+              </figure>
+            </div>
+            <div class="exp-card__body">
+              <div class="exp-card__meta">
+                <span class="status status--done">Completed</span>
+                <span class="exp-place">Sherman Oaks, Los Angeles</span>
+              </div>
+              <h3>3802 Hollyline Avenue</h3>
+              <p>Completed contemporary hillside residence with expansive glazing, multiple terraces, rooftop entertaining areas, an infinity pool, and canyon views.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>

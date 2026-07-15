@@ -35,12 +35,24 @@ This is **not** an automated investment platform. The following are **not built 
 A static website — plain HTML and CSS, no build step and no backend framework.
 
 ```
-index.html      Homepage (hero, what we do, featured opportunity, why Pegasus, how it works, contact)
-project.html    Vista Del Mar Townhomes — featured opportunity detail
-styles.css      Design system (palette, typography, spacing, components)
-script.js       Progressive enhancement: mobile nav + human-led contact form (mailto)
-assets/         Images and visuals
+index.html              Homepage (hero, what we do, featured opportunity,
+                        development experience, why Pegasus, how it works, contact)
+project.html            Vista Del Mar Townhomes — featured opportunity detail
+styles.css              Design system (palette, typography, spacing, components)
+script.js               Progressive enhancement: mobile nav + human-led contact form (mailto)
+assets/                 Brand mark / favicon
+public/images/projects/ Approved project media, by project (see public/images/README.md)
 ```
+
+Project imagery is organized under `public/images/projects/{vista-del-mar,sky-lane,hollyline}/`
+and optimized for the web (WebP with JPG/PNG fallback via `<picture>`, responsive `srcset`,
+baked EXIF orientation, lazy loading below the fold). See
+[`public/images/README.md`](./public/images/README.md) for details and usage guardrails.
+
+External links: the Vista Del Mar project name and **View Project** button open
+[vistadelmartownhomes.com](https://vistadelmartownhomes.com); the Development Experience
+section links to [californiardp.com](https://californiardp.com). Both open in a new tab
+with `rel="noopener noreferrer"`.
 
 The contact form is intentionally simple and human-led. It composes an email to Pegasus rather than
 submitting to any automated pipeline. To route submissions through a form service instead, replace the
