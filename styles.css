@@ -1326,3 +1326,127 @@ p {
   .metric-grid,
   .underwriting-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ---------- Pegasus corporate + underwriting refinement ---------- */
+.method-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  border:1px solid var(--hairline);
+  background:var(--hairline);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.method-card{
+  background:var(--warm-white);
+  padding:clamp(1.5rem,3vw,2.25rem);
+}
+.method-card__number{
+  display:block;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--steel);
+}
+.method-card h3{
+  margin-top:.8rem;
+  font-family:var(--serif);
+  color:var(--navy);
+  font-size:1.45rem;
+}
+.method-card p{
+  margin-top:.85rem;
+  color:var(--graphite-soft);
+  line-height:1.6;
+}
+.experience-preview{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2rem;
+  align-items:end;
+}
+.project-nav{
+  position:sticky;
+  top:74px;
+  z-index:18;
+  background:rgba(250,248,244,.96);
+  border-bottom:1px solid var(--hairline);
+  backdrop-filter:blur(10px);
+}
+.project-nav__inner{
+  display:flex;
+  gap:1.5rem;
+  overflow-x:auto;
+  white-space:nowrap;
+  padding-top:.85rem;
+  padding-bottom:.85rem;
+}
+.project-nav a{
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--graphite-soft);
+}
+.project-nav a:hover{color:var(--navy)}
+.capital-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  border:1px solid var(--hairline);
+  background:var(--hairline);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.capital-card{
+  background:var(--warm-white);
+  padding:clamp(1.35rem,2.5vw,1.9rem);
+}
+.capital-card span{
+  display:block;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--steel);
+}
+.capital-card strong{
+  display:block;
+  margin-top:.65rem;
+  font-family:var(--serif);
+  font-size:1.55rem;
+  font-weight:500;
+  color:var(--navy);
+}
+.capital-card p{
+  margin-top:.7rem;
+  color:var(--graphite-soft);
+  font-size:.88rem;
+  line-height:1.5;
+}
+.capital-note{
+  margin-top:1.5rem;
+  padding:1.35rem 1.5rem;
+  border-left:3px solid var(--steel);
+  background:rgba(60,95,131,.06);
+}
+.capital-note strong{
+  color:var(--navy);
+  font-size:1rem;
+}
+.capital-note p{
+  margin-top:.45rem;
+  color:var(--graphite-soft);
+  line-height:1.55;
+  max-width:56rem;
+}
+@media(max-width:960px){
+  .method-grid,.capital-grid{grid-template-columns:1fr 1fr}
+  .experience-preview{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .method-grid,.capital-grid{grid-template-columns:1fr}
+  .project-nav{top:64px}
+}
