@@ -125,16 +125,31 @@ All financial figures on opportunities must be clearly marked as preliminary, e.
 
 ### 4.4 Approved homepage structure
 
-The public homepage is deliberately **short — two sections plus header and footer**. A visitor should grasp its purpose within a few seconds:
+The public homepage remains concise and corporate. Pegasus is the identity; Vista Del Mar is the current featured opportunity, not the company identity.
 
-1. **Lead** — combines Pegasus identity and the current Vista Del Mar opportunity in one section: eyebrow "PEGASUS LENDERS GROUP LLC"; the approved Vista rendering (with the "Conceptual rendering for illustrative purposes only." caption); the **four** primary figures only — 17 Rebuild Units · 48,079 Original Sq.Ft. · Up to $8M Stage 1 Capital · ≈$59.5M Conservative Projected Gross Revenue; the preliminary-figures disclosure; and CTAs **Discuss Vista Del Mar** (→ contact form) and **View Full Project** (→ vistadelmartownhomes.com, new tab).
-2. **Direct Contact** — placed **immediately after** the lead. The Netlify `capital-interest` form (name, email, phone, company, capitalRange, message).
+1. **Lead / Current Opportunity** — Pegasus corporate positioning plus the approved Vista rendering, four high-level facts, and direct links to the detailed underwriting page and the separate Vista project-facts site.
+2. **Direct Contact** — Netlify `capital-interest` form immediately after the lead.
 
-Do **NOT** place on the homepage: corporate slogans, Pegasus-role cards, sponsor-alignment (Sponsor-Led / Capital-Aligned / Execution-Focused), a separate Stage 1 / Stage 2 explanation, the ≈20% sponsor-contribution figure, the ≈$30.6M construction estimate as a primary figure, development-experience projects, or any process/philosophy section between the opportunity and the form.
+**Current Vista Del Mar public underwriting assumptions:**
+- 17 fire-loss units in rebuild scope; 8 existing units remain intact.
+- Original living area: 43,664 sq ft.
+- Original gross building area including garages: 51,781 sq ft.
+- Planning case may target up to approximately 10% additional deliverable area, subject to design, HOA, zoning, engineering and governmental review; do not describe this as a guaranteed entitlement.
+- Planning target living area: approximately 48,030 sq ft.
+- Planning target gross construction area: approximately 56,959 sq ft.
+- Stage 1 working capital requirement: up to approximately $8M; this is not a stated purchase price.
+- External blended reconstruction underwriting: approximately $600 per target gross sq ft.
+- Separate common-area / community reserve: $2.0M.
+- Base exit underwriting: $1,300 per target living sq ft.
+- Base projected gross sell-out: approximately $62.44M.
+- Sensitivity cases may show $1,200 / $1,300 / $1,400 / $1,500 per living sq ft, clearly labeled as scenarios.
+- Do not publish the sponsor's internal construction cost.
+- Do not publish fixed investor IRR, preferred return, waterfall, construction-loan amount, required investor equity, recourse, rate, points or term until specifically approved after financing is structured.
+- Required equity is an output of final total uses and lender proceeds, not a plug assumption.
 
-**Header nav (short):** Current Opportunity · About Pegasus · Development Experience · Contact, with primary button **Speak with Pegasus**. **About Pegasus** and **Development Experience** are their own short internal pages. Development Experience holds the Hollyline and Sky Lane proof-of-execution references and the California Residential Development Partners link — never on the homepage.
+**Header nav:** Current Opportunity · About Pegasus · Development Experience · Contact, with primary button **Speak with Pegasus**.
 
-**Contact form:** implemented with **Netlify Forms** (form name `capital-interest`) — a static hidden form for detection plus a URL-encoded AJAX submission with idle/submitting/success/error states. No backend, serverless function, CRM, payment, account, or database.
+**Contact form:** Netlify Forms (`capital-interest`) only. No CRM, portal, payment system, account, or automated investment flow.
 
 ---
 
