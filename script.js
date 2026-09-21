@@ -100,7 +100,7 @@
       submitBtn.setAttribute("aria-busy", on ? "true" : "false");
       submitBtn.innerHTML = on
         ? "Sending…"
-        : 'Speak with Pegasus <span class="btn-arrow">→</span>';
+        : 'Discuss Capital Participation <span class="btn-arrow">→</span>';
     };
 
     var encode = function (data) {
@@ -156,6 +156,21 @@
           setSubmitting(false);
           if (errorBox) errorBox.hidden = false;
         });
+    });
+
+    // Intent-aware contact links: they scroll to the real form and prepare a useful message.
+    document.querySelectorAll("[data-contact-intent]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var message = form.elements["message"];
+        if (!message) return;
+        var intent = link.getAttribute("data-contact-intent");
+        if (intent === "materials" && !message.value.trim()) {
+          message.value = "I would like to review the confidential materials for the current Vista Del Mar opportunity.";
+        }
+        if (intent === "capital" && !message.value.trim()) {
+          message.value = "I would like to discuss capital participation with Pegasus Lenders Group.";
+        }
+      });
     });
 
     // Clear a field's error as the visitor corrects it.
