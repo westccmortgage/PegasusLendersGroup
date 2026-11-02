@@ -1,113 +1,46 @@
 # Pegasus Lenders Group
 
-Website source for **[pegasuslendersgroup.com](https://pegasuslendersgroup.com)**.
+Source for [pegasuslendersgroup.com](https://pegasuslendersgroup.com).
 
-Pegasus Lenders Group is a real estate lending and project sponsorship firm. This site presents
-selected real estate opportunities, establishes credibility, shows the important numbers, and
-invites serious capital partners to contact Pegasus directly.
+Pegasus Lenders Group is the private real estate credit and capital-relationship desk in the broader Pegasus ecosystem. The public site has two direct paths:
 
----
+1. Capital providers publish lending criteria and buy boxes.
+2. Sponsors and borrowers submit defined business-purpose real estate financing scenarios.
 
-## Purpose & Scope
+Every relationship is reviewed by a person. The site does not accept investments, loan commitments, sensitive documents, or payments.
 
-Pegasus Lenders Group is a **human-led corporate capital website**. It is a modern, serious corporate
-capital site — not the Vista Del Mar project site, a project marketplace, a portfolio carousel, or an
-automated platform. The public site **presents information and generates direct conversations**; the
-process is **human-led** end to end:
+## Ecosystem
 
-1. See the opportunity.
-2. Understand the key numbers.
-3. Contact Pegasus.
-4. Discuss the project directly with the team.
-5. Receive additional materials personally, after the initial conversation.
+- **Pegasus Capital Network:** voluntary profiles, criteria discovery, and member-directed introductions.
+- **Pegasus Lenders Group:** private real estate credit relationships and scenario review.
+- **West Coast Capital Investment:** project-specific opportunity review and structuring across real estate, private credit, and select ventures.
+- **California RDP:** development and construction execution.
 
-### Project references
+The roles must stay distinct. Do not present a project as a current capital raise unless the owner explicitly confirms it.
 
-- **Vista Del Mar Townhomes has its own project website** ([vistadelmartownhomes.com](https://vistadelmartownhomes.com))
-  and appears on the Pegasus site **only as the current capital opportunity** — never as the Pegasus identity.
-- **Other development projects** appear **only as limited proof of execution** (name, status, one approved image) —
-  no values, financing, or private ownership details.
+## Pages
 
-### Permanently out of scope
+- `/` — overview and routing
+- `/capital-providers` — lender criteria intake
+- `/financing-scenarios` — sponsor/borrower scenario intake
+- `/credit-criteria` — public screening criteria
+- `/how-it-works` — human-led process
+- `/development-experience` — limited execution evidence
+- `/about` — organization and ecosystem
+- `/aapl` — AAPL conference landing page
+- `/privacy`, `/terms`, `/disclosures` — legal pages
 
-This is **not** an automated investment platform. The site does not accept money, commitments, subscriptions,
-or payments. The following are **not built and not on any roadmap**:
+## Forms
 
-- Payments · Subscriptions · Investor accounts
-- CRM · Automatic accreditation · KYC / AML workflow
-- Investor portal · Automated onboarding · Securities checkout
-- Complex dashboards · Automated qualification or investment processes
+Netlify Forms detects two forms in static HTML:
 
-All discussions, documents, qualification, and funding instructions are handled personally, off the public website.
+- `capital-provider-criteria`
+- `financing-scenario`
 
----
+Both collect UTM attribution, landing page, and referrer. The browser submits URL-encoded form data to Netlify and routes successful submissions to `/thank-you`.
 
-## Tech
+## Development
 
-A static website — plain HTML, CSS, and vanilla JS. No build step, no framework, no backend.
-(There is no React/Vite/TypeScript toolchain in this repository; the contact form is implemented
-directly against the DOM.)
+Plain HTML, CSS, and vanilla JavaScript. No framework or build step is required for deployment.
 
-```
-index.html                  Homepage — lead (Pegasus + current Vista Del Mar opportunity) → contact
-about.html                  About Pegasus — short internal page
-development-experience.html Development Experience — Hollyline + Sky Lane proof of execution
-project.html                Vista Del Mar — opportunity detail (secondary page)
-styles.css                  Design system (palette, typography, spacing, components)
-script.js                   Progressive enhancement: mobile nav + Netlify capital-interest form
-netlify.toml                Netlify config (static publish, no build)
-assets/                     Brand mark / favicon
-public/images/projects/     Approved project media, by project (see public/images/README.md)
-```
-
-Project imagery is organized under `public/images/projects/{vista-del-mar,sky-lane,hollyline}/`
-and optimized for the web (WebP with JPG/PNG fallback via `<picture>`, responsive `srcset`,
-baked EXIF orientation, lazy loading below the fold). See
-[`public/images/README.md`](./public/images/README.md) for details and usage guardrails.
-
-External links open in a new tab with `rel="noopener noreferrer"`: the homepage **View Full Project**
-button opens [vistadelmartownhomes.com](https://vistadelmartownhomes.com); the Development Experience
-page links to [californiardp.com](https://californiardp.com).
-
-## Contact form — Netlify Forms
-
-The contact form uses **[Netlify Forms](https://docs.netlify.com/forms/setup/)** — no backend,
-serverless function, CRM, database, or payment integration.
-
-- **Form name:** `capital-interest`
-- **Fields:** `name`, `email`, `phone`, `company`, `capitalRange`, `message`, plus a `bot-field`
-  honeypot and the hidden `form-name` value.
-- **Static detection:** a hidden `<form name="capital-interest" data-netlify="true"
-  netlify-honeypot="bot-field" hidden>` in `index.html` lets Netlify register the form at deploy
-  time. Its field names match the visible form exactly.
-- **Submission:** the visible form submits via **AJAX `POST` to `/`** with
-  `Content-Type: application/x-www-form-urlencoded`, body encoded using `URLSearchParams`
-  (not JSON), including `form-name=capital-interest`.
-- **States:** `idle → submitting → success → error`. While submitting, the button is disabled and
-  shows “Sending…” (duplicate submissions are blocked). On success the form is replaced by an inline
-  confirmation and keyboard focus moves to it. On error a visible message points to
-  `contact@pegasuslendersgroup.com`. Status uses `aria-live`, and required fields are validated
-  client-side (name, valid email, message). The honeypot is visually hidden and hidden from
-  assistive technology.
-
-To change the destination inbox, configure form notifications in the Netlify dashboard
-(Site → Forms) — no code change is required.
-
-## Local preview
-
-No tooling required. Open `index.html` in a browser, or serve the folder:
-
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
-
-> Note: Netlify Forms submissions only work on a deployed Netlify site (the form is processed by
-> Netlify's infrastructure). Locally the form validates and exercises its UI states, but the POST
-> to `/` will not be captured.
-
-## Contributing
-
-Read [`CLAUDE.md`](./CLAUDE.md) first. It holds the permanent brand, content, and design guardrails —
-short copy, approved CTA language, the restrained navy / stone / steel palette, and the human-led,
-no-platform scope. Treat those as guardrails, not suggestions.
+Run `node tools/generate-site.mjs` after editing the site generator, then preview with `python3 -m http.server 8000`.

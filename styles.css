@@ -1917,3 +1917,334 @@ p {
   .scenario-table th,.scenario-table td { padding: .8rem .7rem; }
   .form__actions { align-items: flex-start; flex-direction: column; }
 }
+
+/* ---------- 2026 relationship platform pages ---------- */
+.brand__mark {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.subhero {
+  padding-block: clamp(5rem, 10vw, 8rem);
+  background: var(--stone);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.subhero h1 {
+  max-width: 50rem;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+}
+
+.subhero__lede {
+  max-width: 44rem;
+  margin-top: 1.5rem;
+  color: var(--graphite-soft);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+.subhero__actions,
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.section-head--wide {
+  max-width: 58rem;
+}
+
+.choice-grid,
+.service-grid,
+.ecosystem-grid,
+.criteria-grid,
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+
+.service-grid,
+.criteria-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ecosystem-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.choice-grid--stack {
+  grid-template-columns: 1fr;
+}
+
+.choice-card,
+.service-card,
+.ecosystem-card,
+.criteria-grid > article,
+.check-grid > div {
+  display: block;
+  min-height: 15rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--warm-white);
+  color: var(--graphite);
+}
+
+.choice-card {
+  min-height: 20rem;
+}
+
+.choice-card span,
+.ecosystem-card span,
+.service-card span,
+.criteria-grid span {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--steel);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.choice-card h3,
+.service-card h3,
+.ecosystem-card h3,
+.criteria-grid h3,
+.check-grid h3 {
+  font-size: clamp(1.55rem, 2.8vw, 2.2rem);
+}
+
+.choice-card p,
+.service-card p,
+.ecosystem-card p,
+.criteria-grid p,
+.check-grid p {
+  margin-top: 1rem;
+  color: var(--graphite-soft);
+}
+
+.choice-card b {
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: var(--steel);
+  font-size: 0.9rem;
+}
+
+.choice-card:hover,
+.ecosystem-card:hover {
+  color: var(--graphite);
+  background: #fff;
+}
+
+.choice-card--navy {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.choice-card--navy h3,
+.choice-card--navy b {
+  color: #fff;
+}
+
+.choice-card--navy p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.choice-card--navy:hover {
+  background: var(--navy-deep);
+  color: #fff;
+}
+
+.contact .choice-card--light {
+  min-height: 13rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.contact .choice-card--light h3,
+.contact .choice-card--light b {
+  color: #fff;
+}
+
+.contact .choice-card--light:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  counter-reset: step;
+  border-block: 1px solid var(--hairline);
+}
+
+.steps > article {
+  min-height: 18rem;
+  padding: 2rem;
+  border-right: 1px solid var(--hairline);
+  counter-increment: step;
+}
+
+.steps > article:last-child {
+  border-right: 0;
+}
+
+.steps > article::before {
+  content: "0" counter(step);
+  display: block;
+  margin-bottom: 4rem;
+  color: var(--steel);
+  font: 700 0.72rem var(--sans);
+  letter-spacing: 0.15em;
+}
+
+.steps h3 {
+  font-size: 1.7rem;
+}
+
+.steps p {
+  margin-top: 1rem;
+  color: var(--graphite-soft);
+}
+
+.check-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--steel);
+  font-weight: 700;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.checkbox-field input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  flex: none;
+}
+
+.legal-copy {
+  max-width: 52rem;
+}
+
+.legal-copy h2 {
+  margin-top: 2.5rem;
+  font-size: 1.8rem;
+}
+
+.legal-copy h2:first-child {
+  margin-top: 0;
+}
+
+.legal-copy p,
+.legal-copy ul {
+  margin-top: 1rem;
+}
+
+.legal-callout {
+  margin-top: 4rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.legal-callout h2 {
+  color: #fff;
+}
+
+.legal-callout p {
+  max-width: 52rem;
+  margin-top: 1rem;
+}
+
+.form-status {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  background: #fff2f0;
+  color: #8a2d24;
+  border-left: 3px solid #b8473b;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+@media (max-width: 1100px) {
+  .ecosystem-grid,
+  .service-grid,
+  .criteria-grid,
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .steps > article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .steps > article {
+    border-bottom: 1px solid var(--hairline);
+  }
+}
+
+@media (max-width: 720px) {
+  .choice-grid,
+  .service-grid,
+  .ecosystem-grid,
+  .criteria-grid,
+  .check-grid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-card,
+  .service-card,
+  .ecosystem-card,
+  .criteria-grid > article,
+  .check-grid > div,
+  .steps > article {
+    min-height: auto;
+  }
+
+  .steps > article,
+  .steps > article:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .steps > article:last-child {
+    border-bottom: 0;
+  }
+
+  .steps > article::before {
+    margin-bottom: 2rem;
+  }
+}
