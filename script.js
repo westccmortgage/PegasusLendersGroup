@@ -1,4 +1,4 @@
-/* Pegasus Lenders Group — progressive enhancement only. */
+/* Pegasus Lenders Group — navigation, attribution, and Netlify Forms. */
 (function () {
   "use strict";
 
@@ -22,15 +22,12 @@
       if (event.target.closest("a")) closeMenu();
     });
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeMenu();
-        toggle.focus();
-      }
+      if (event.key === "Escape") closeMenu();
     });
   }
 
   var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && reveals.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -38,119 +35,65 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -32px 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
     reveals.forEach(function (element) { observer.observe(element); });
   } else {
     reveals.forEach(function (element) { element.classList.add("is-visible"); });
   }
 
-  var form = document.querySelector(".js-contact-form");
-  if (!form) return;
+  var query = new URLSearchParams(window.location.search);
+  var attribution = {
+    utmSource: query.get("utm_source") || "",
+    utmMedium: query.get("utm_medium") || "",
+    utmCampaign: query.get("utm_campaign") || "",
+    landingPage: window.location.pathname + window.location.search,
+    referrer: document.referrer || ""
+  };
 
-  var submitButton = form.querySelector('[type="submit"]');
-  var errorBox = form.querySelector(".form-status--error");
-  var successBox = document.getElementById("form-success");
-  var submitting = false;
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var requiredFields = [
-    { name: "name", test: function (value) { return value.length > 0; } },
-    { name: "email", test: function (value) { return emailPattern.test(value); } },
-    { name: "message", test: function (value) { return value.length > 0; } }
-  ];
-
-  function fieldValue(name) {
-    return form.elements[name] ? form.elements[name].value.trim() : "";
-  }
-
-  function setFieldError(field, show) {
-    var input = form.elements[field.name];
-    var error = document.getElementById(field.name + "-error");
-    if (error) error.hidden = !show;
-    if (input) {
-      input.setAttribute("aria-invalid", show ? "true" : "false");
-      if (show && error) input.setAttribute("aria-describedby", error.id);
-      else input.removeAttribute("aria-describedby");
-    }
-  }
-
-  function validate() {
-    var firstInvalid = null;
-    requiredFields.forEach(function (field) {
-      var valid = field.test(fieldValue(field.name));
-      setFieldError(field, !valid);
-      if (!valid && !firstInvalid) firstInvalid = form.elements[field.name];
+  document.querySelectorAll(".js-track-form").forEach(function (form) {
+    Object.keys(attribution).forEach(function (name) {
+      if (form.elements[name]) form.elements[name].value = attribution[name];
     });
-    return firstInvalid;
-  }
 
-  function setIntent(intent) {
-    var type = form.elements.inquiryType;
-    var message = form.elements.message;
-    if (intent === "materials") {
-      if (type) type.value = "Confidential Materials Request — Vista Del Mar";
-      if (message && !message.value.trim()) message.value = "I would like to review the confidential materials for the Vista Del Mar opportunity.";
-      if (submitButton) submitButton.innerHTML = 'Request Confidential Materials <span class="btn-arrow" aria-hidden="true">→</span>';
-    } else {
-      if (type) type.value = window.location.pathname.indexOf("opportunity") !== -1 ? "Capital Participation Discussion — Vista Del Mar" : "Capital Participation Discussion";
-      if (message && !message.value.trim()) message.value = "I would like to discuss capital participation with Pegasus Lenders Group.";
-      if (submitButton) submitButton.innerHTML = 'Discuss Capital Participation <span class="btn-arrow" aria-hidden="true">→</span>';
-    }
-    if (message) setFieldError({ name: "message" }, false);
-  }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
 
-  document.querySelectorAll("[data-contact-intent]").forEach(function (control) {
-    control.addEventListener("click", function () {
-      setIntent(control.getAttribute("data-contact-intent"));
-    });
-  });
-
-  requiredFields.forEach(function (field) {
-    var input = form.elements[field.name];
-    if (input) input.addEventListener("input", function () {
-      if (field.test(input.value.trim())) setFieldError(field, false);
-    });
-  });
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (submitting) return;
-    if (errorBox) errorBox.hidden = true;
-    var firstInvalid = validate();
-    if (firstInvalid) {
-      firstInvalid.focus();
-      return;
-    }
-
-    submitting = true;
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.setAttribute("aria-busy", "true");
-      submitButton.textContent = "Sending…";
-    }
-
-    var parameters = new URLSearchParams();
-    new FormData(form).forEach(function (value, key) { parameters.append(key, value); });
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: parameters.toString()
-    }).then(function (response) {
-      if (!response.ok) throw new Error("Submission failed");
-      form.reset();
-      form.hidden = true;
-      if (successBox) {
-        successBox.hidden = false;
-        successBox.focus();
+      var submit = form.querySelector('[type="submit"]');
+      var original = submit ? submit.innerHTML : "";
+      if (submit) {
+        submit.disabled = true;
+        submit.setAttribute("aria-busy", "true");
+        submit.textContent = "Submitting…";
       }
-    }).catch(function () {
-      submitting = false;
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.removeAttribute("aria-busy");
-        submitButton.innerHTML = 'Discuss Capital Participation <span class="btn-arrow" aria-hidden="true">→</span>';
-      }
-      if (errorBox) errorBox.hidden = false;
+
+      var data = new URLSearchParams();
+      new FormData(form).forEach(function (value, key) { data.append(key, value); });
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString()
+      }).then(function (response) {
+        if (!response.ok) throw new Error("Submission failed");
+        window.location.assign("/thank-you");
+      }).catch(function () {
+        if (submit) {
+          submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.innerHTML = original;
+        }
+        var status = form.querySelector(".form-status");
+        if (!status) {
+          status = document.createElement("p");
+          status.className = "form-status";
+          status.setAttribute("role", "alert");
+          status.setAttribute("tabindex", "-1");
+          form.appendChild(status);
+        }
+        status.textContent = "The form could not be submitted. Please try again or email contact@pegasuslendersgroup.com.";
+        status.focus();
+      });
     });
   });
 })();

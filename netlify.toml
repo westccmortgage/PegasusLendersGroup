@@ -1,11 +1,8 @@
 # Netlify configuration — Pegasus Lenders Group
-# Static site: no build step. The repository root IS the published site,
-# so index.html (which contains the hidden "capital-interest" form) is the
-# production HTML Netlify scans for Netlify Forms at deploy time.
+# Static site; Netlify scans the published HTML for the two intake forms.
 
 [build]
   publish = "."
   command = ""
 
-# Netlify Forms is enabled automatically when a form with data-netlify="true"
-# is present in the deployed HTML. No serverless function or backend is used.
+# Redirects and security headers live in _redirects and _headers.
