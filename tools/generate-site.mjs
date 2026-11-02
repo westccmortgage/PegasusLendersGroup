@@ -106,7 +106,7 @@ function head(key, extraSchema = "") {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=20261102" />
+  <link rel="stylesheet" href="/styles.css?v=20261102-2" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <script type="application/ld+json">${JSON.stringify(organization)}</script>
 ${extraSchema}
@@ -247,7 +247,7 @@ const disclosures = legalPage("disclosures", "Important Information", "Disclosur
 
 const thanks = pageShell("thanks", "", `${pageHero("Introduction Received", "Thank you.", "Pegasus will review the information and respond when there is a credible basis for a direct conversation.", `<a class="btn btn--invert" href="/">Return Home</a>`)}<section class="section"><div class="wrap"><div class="legal-callout"><h2>No commitment has been created.</h2><p>Your submission is a request for business contact only. Do not send sensitive documents unless a secure process is provided later.</p></div></div></section>`);
 
-const notFound = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Page Not Found — Pegasus Lenders Group</title><meta name="robots" content="noindex"/><link rel="stylesheet" href="/styles.css?v=20261102"/><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/></head><body>${header()}<main>${pageHero("404", "Page not found.", "The page may have moved as Pegasus updated its private-credit platform.", `<a class="btn btn--invert" href="/">Return Home</a>`)}</main>${footer()}</body></html>`;
+const notFound = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Page Not Found — Pegasus Lenders Group</title><meta name="robots" content="noindex"/><link rel="stylesheet" href="/styles.css?v=20261102-2"/><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/></head><body>${header()}<main>${pageHero("404", "Page not found.", "The page may have moved as Pegasus updated its private-credit platform.", `<a class="btn btn--invert" href="/">Return Home</a>`)}</main>${footer()}</body></html>`;
 
 const pages = {"index.html":home,"capital-providers.html":capital,"financing-scenarios.html":scenarios,"credit-criteria.html":criteria,"how-it-works.html":process,"development-experience.html":experience,"about.html":about,"aapl.html":aapl,"privacy.html":privacy,"terms.html":terms,"disclosures.html":disclosures,"thank-you.html":thanks,"404.html":notFound};
 for (const [file, content] of Object.entries(pages)) writeFileSync(new URL(file, root), content);
